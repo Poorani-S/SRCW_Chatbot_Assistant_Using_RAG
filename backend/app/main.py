@@ -273,3 +273,24 @@ async def trigger_ingest(request: Request):
         return {"status": "success", **result}
     except Exception as e:
         raise HTTPException(500, f"Ingestion failed: {e}")
+
+
+# ---- Serve the built React app (single-service deploy) ----
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
+DIST = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
+
+if DIST.exists():
+    if (DIST / "assets").exists():
+        app.mount("/assets", StaticFiles(directory=DIST / "assets"), name="assets")
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    def serve_frontend(full_path: str):
+        if full_path.startswith("api/"):
+            raise HTTPException(404, "Not found")
+        file = (DIST / full_path).resolve()
+        if full_path and file.is_file() and DIST.resolve() in file.parents:
+            return FileResponse(file)          # e.g. logo, favicon
+        return FileResponse(DIST / "index.html")  # the React app
+
