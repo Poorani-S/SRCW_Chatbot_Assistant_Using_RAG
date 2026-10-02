@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "question": "What undergraduate programmes does SRCW offer?",
+    "expected_sources": ["https://srcw.ac.in/programmesoffered"],
+    "expected_category": "programmes"
+  },
+  {
+    "id": 2,
+    "question": "What is the eligibility criterion for BCA admission?",
+    "expected_sources": ["https://srcw.ac.in/admissionregulations"],
+    "expected_category": "admissions"
+  },
+  {
+    "id": 3,
+    "question": "Does SRCW have a hostel for students?",
+    "expected_sources": ["https://srcw.ac.in"],
+    "expected_category": "hostel_transport"
+  },
+  {
+    "id": 4,
+    "question": "What scholarships are available at SRCW?",
+    "expected_sources": ["https://srcw.ac.in/scholarship"],
+    "expected_category": "scholarship"
+  },
+  {
+    "id": 5,
+    "question": "How can I apply for admission to SRCW?",
+    "expected_sources": ["https://srcw.ac.in/admissionenquiry"],
+    "expected_category": "admissions"
+  },
+  {
+    "id": 6,
+    "question": "What is the NAAC grade of SRCW?",
+    "expected_sources": ["https://srcw.ac.in/naac"],
+    "expected_category": "general"
+  },
+  {
+    "id": 7,
+    "question": "Which companies visit SRCW for campus placements?",
+    "expected_sources": ["https://srcw.ac.in/placement"],
+    "expected_category": "placement"
+  },
+  {
+    "id": 8,
+    "question": "What are the contact details of SRCW?",
+    "expected_sources": ["https://srcw.ac.in/contactus"],
+    "expected_category": "contact"
+  },
+  {
+    "id": 9,
+    "question": "What is the address of the college?",
+    "expected_sources": ["https://srcw.ac.in/contactus"],
+    "expected_category": "contact"
+  },
+  {
+    "id": 10,
+    "question": "What is the library like at SRCW?",
+    "expected_sources": ["https://srcw.ac.in/library"],
+    "expected_category": "facilities"
+  },
+  {
+    "id": 11,
+    "question": "Tell me about the computer science department.",
+    "expected_sources": ["https://srcw.ac.in/department/computer-science"],
+    "expected_category": "departments"
+  },
+  {
+    "id": 12,
+    "question": "What documents are needed for admission?",
+    "expected_sources": ["https://srcw.ac.in/admissionregulations"],
+    "expected_category": "admissions"
+  },
+  {
+    "id": 13,
+    "question": "Does SRCW have bus transport for students?",
+    "expected_sources": ["https://srcw.ac.in"],
+    "expected_category": "hostel_transport"
+  },
+  {
+    "id": 14,
+    "question": "What is the IQAC of SRCW?",
+    "expected_sources": ["https://srcw.ac.in/iqac"],
+    "expected_category": "policies"
+  },
+  {
+    "id": 15,
+    "question": "What sports facilities are available?",
+    "expected_sources": ["https://srcw.ac.in/physicaleducation"],
+    "expected_category": "facilities"
+  },
+  {
+    "id": 16,
+    "question": "SRCW la BBA course irukka?",
+    "expected_sources": ["https://srcw.ac.in/programmesoffered"],
+    "expected_category": "programmes"
+  },
+  {
+    "id": 17,
+    "question": "What are the anti-ragging policies at SRCW?",
+    "expected_sources": ["https://srcw.ac.in/antiragging"],
+    "expected_category": "policies"
+  },
+  {
+    "id": 18,
+    "question": "Are there any certificate courses at SRCW?",
+    "expected_sources": ["https://srcw.ac.in/certificatecourses"],
+    "expected_category": "programmes"
+  },
+  {
+    "id": 19,
+    "question": "How many volumes are in the library?",
+    "expected_sources": ["https://srcw.ac.in/library"],
+    "expected_category": "facilities"
+  },
+  {
+    "id": 20,
+    "question": "What is the tagline of SRCW?",
+    "expected_sources": ["https://srcw.ac.in"],
+    "expected_category": "general"
+  }
+]

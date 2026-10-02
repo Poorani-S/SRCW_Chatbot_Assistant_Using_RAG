@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Data and index (rebuild with ingest.py)
+backend/data/index.faiss
+backend/data/chunks.json
+
+# Keep feedback and unanswered logs:
+# backend/data/feedback.jsonl
+# backend/data/unanswered.jsonl
+
+# Environment (keep .env.example, not .env)
+backend/.env
+
+# Frontend build
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test scratch
+test_rag.py
+test_api.py
