@@ -36,32 +36,35 @@
 
 /* ─── SRCW Colour Palette ────────────────────────────────────────────────── */
 /*
-   Deep teal-navy dark mode with warm rose/gold accent –
-   dignified and welcoming for a women's college.
+   Signature SRCW Green Theme matching the college logo:
+   - Deep forest green (#03523C) & vibrant emerald (#059669)
+   - Official crest gold (#C8A634) accents
+   - Luxurious pine dark mode for dignified academic presence
 */
 :root {
-  --background:          #0d1620;   /* very deep navy */
-  --foreground:          #e6eef4;   /* near-white, slightly blue-grey */
-  --card:                #131f2e;   /* slightly lighter card */
-  --card-hover:          #192840;
-  --border:              #1f3347;
-  --primary:             #d4896b;   /* warm terracotta rose */
-  --primary-foreground:  #0d1620;
-  --secondary:           #c47f5e;
-  --muted:               #1a2d42;
-  --muted-foreground:    #7ea5bc;
-  --highlight:           #f5c97a;   /* warm gold for mark highlights */
-  --destructive:         #e85454;
-  --accent:              #b06840;   /* deep copper accent */
-  --accent-foreground:   #f0ddd0;
-  --sidebar:             rgba(10, 20, 35, 0.88);
-  --sidebar-foreground:  #e6eef4;
-  --skeleton-from:       #1a2d42;
-  --skeleton-to:         #1f3347;
-  --citation:            #d4896b;
-  --citation-hover:      #e8a887;
-  --chip:                rgba(212, 137, 107, 0.12);
-  --chip-text:           #d4896b;
+  --background:          #06140e;   /* deep forest obsidian */
+  --foreground:          #edf7f2;   /* crisp mint-white */
+  --card:                #0b2118;   /* deep emerald slate card */
+  --card-hover:          #102d21;
+  --border:              #153d2d;   /* pine border */
+  --primary:             #059669;   /* vibrant emerald */
+  --primary-foreground:  #ffffff;
+  --secondary:           #03523c;   /* official college logo forest green */
+  --muted:               #0e261d;
+  --muted-foreground:    #7fa898;   /* soft sage-grey */
+  --highlight:           #c8a634;   /* official logo crest gold */
+  --highlight-foreground:#06140e;
+  --destructive:         #ef4444;
+  --accent:              #0a775a;   /* medium emerald from logo */
+  --accent-foreground:   #d1fae5;
+  --sidebar:             rgba(6, 20, 14, 0.94);
+  --sidebar-foreground:  #edf7f2;
+  --skeleton-from:       #0b2118;
+  --skeleton-to:         #153d2d;
+  --citation:            #10b981;   /* bright emerald */
+  --citation-hover:      #34d399;
+  --chip:                rgba(5, 150, 105, 0.12);
+  --chip-text:           #34d399;
 }
 
 /* ─── Base ────────────────────────────────────────────────────────────────── */
@@ -118,8 +121,8 @@ body {
 }
 
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 137, 107, 0); }
-  50%       { box-shadow: 0 0 14px 3px rgba(212, 137, 107, 0.18); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+  50%       { box-shadow: 0 0 16px 3px rgba(5, 150, 105, 0.3); }
 }
 
 @keyframes float {
@@ -169,9 +172,9 @@ body {
 /* ─── Chat Background (gradient mesh) ──────────────────────────────────────── */
 .chat-bg {
   background:
-    radial-gradient(ellipse at 15% 25%, rgba(212, 137, 107, 0.05) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 75%, rgba(176, 104, 64,  0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 0%,  rgba(245, 201, 122, 0.03) 0%, transparent 40%),
+    radial-gradient(ellipse at 15% 20%, rgba(5, 150, 105, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 75%, rgba(3, 82, 60,  0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 0%,  rgba(200, 166, 52, 0.04) 0%, transparent 45%),
     var(--background);
 }
 
@@ -179,26 +182,30 @@ body {
 .chip {
   background: var(--chip);
   color: var(--chip-text);
-  border: 1px solid rgba(212, 137, 107, 0.22);
+  border: 1px solid rgba(5, 150, 105, 0.25);
   border-radius: var(--radius-xl);
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1.05rem;
   font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
 .chip:hover {
-  background: rgba(212, 137, 107, 0.22);
-  border-color: rgba(212, 137, 107, 0.45);
-  transform: translateY(-1px);
+  background: rgba(5, 150, 105, 0.22);
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #ffffff;
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 14px rgba(3, 82, 60, 0.35);
 }
 .chip:active { transform: translateY(0) scale(0.98); }
 
 /* ─── User bubble gradient ──────────────────────────────────────────────────── */
 .user-bubble {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: #0d1620;
+  background: linear-gradient(135deg, #059669 0%, #03523c 100%);
+  color: #ffffff;
+  border: 1px solid rgba(167, 243, 208, 0.2);
+  box-shadow: 0 4px 14px -2px rgba(3, 82, 60, 0.45);
 }
 
 /* ─── Source panel ──────────────────────────────────────────────────────────── */
@@ -208,11 +215,11 @@ body {
   border-radius: var(--radius-lg);
   transition: border-color 0.25s, background 0.25s;
 }
-.source-card:hover { border-color: rgba(212, 137, 107, 0.35); background: var(--card-hover); }
+.source-card:hover { border-color: rgba(5, 150, 105, 0.4); background: var(--card-hover); }
 .source-card.highlight {
-  border-color: rgba(212, 137, 107, 0.55);
-  background: rgba(212, 137, 107, 0.06);
-  box-shadow: 0 0 0 1px rgba(212, 137, 107, 0.2);
+  border-color: rgba(200, 166, 52, 0.6);
+  background: rgba(5, 150, 105, 0.1);
+  box-shadow: 0 0 0 1px rgba(200, 166, 52, 0.3);
 }
 
 /* ─── Markdown / prose text ─────────────────────────────────────────────────── */
@@ -237,7 +244,7 @@ body {
 
 /* ─── SRCW brand gradient for headings ─────────────────────────────────────── */
 .brand-gradient {
-  background: linear-gradient(135deg, #e8a887 0%, #d4896b 50%, #c47f5e 100%);
+  background: linear-gradient(135deg, #a7f3d0 0%, #10b981 50%, #c8a634 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

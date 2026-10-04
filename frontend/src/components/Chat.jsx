@@ -25,26 +25,26 @@ import { askQuestion, submitFeedback } from "@/lib/api";
 /* ─── Static Data ─────────────────────────────────────────────────────────── */
 const SUGGESTION_CHIPS = {
   en: [
-    "What courses does SRCW offer?",
-    "How do I apply for admission?",
-    "What scholarships are available?",
-    "Tell me about placements",
-    "Is there a hostel & transport?",
-    "Contact the college",
+    "🎓 What courses does SRCW offer?",
+    "📝 How do I apply for admission 2026?",
+    "🏆 What scholarships are available?",
+    "💼 Tell me about placements & recruiters",
+    "🏡 Is there a hostel & transport facility?",
+    "📞 How can I contact the college office?",
   ],
   ta: [
-    "SRCW என்ன படிப்புகள் வழங்குகிறது?",
-    "சேர்க்கை எப்படி விண்ணப்பிப்பது?",
-    "என்ன உதவித்தொகைகள் உள்ளன?",
-    "வேலைவாய்ப்பு பற்றி சொல்லுங்கள்",
-    "விடுதி மற்றும் போக்குவரத்து உண்டா?",
-    "கல்லூரியை தொடர்பு கொள்ள",
+    "🎓 SRCW என்ன படிப்புகள் வழங்குகிறது?",
+    "📝 சேர்க்கை எப்படி விண்ணப்பிப்பது?",
+    "🏆 என்ன உதவித்தொகைகள் உள்ளன?",
+    "💼 வேலைவாய்ப்பு மற்றும் வளாக தேர்வுகள்",
+    "🏡 விடுதி மற்றும் பேருந்து வசதிகள்",
+    "📞 கல்லூரியின் தொடர்பு விவரங்கள்",
   ],
 };
 
 const LABELS = {
   en: {
-    placeholder: "Ask about SRCW – admissions, courses, hostel…",
+    placeholder: "Ask about SRCW – admissions, courses, hostel, fees…",
     send: "Send",
     clearChat: "Clear chat",
     sources: "Sources",
@@ -53,10 +53,10 @@ const LABELS = {
     copied: "Copied!",
     disclaimer:
       "Answers are generated from SRCW's published information. Please confirm important details with the college office.",
-    welcomeTitle: "Hi! I'm the SRCW Assistant 👋",
-    welcomeSub: "Ask me anything about Sri Ramakrishna College of Arts & Science for Women.",
-    tryThese: "Try one of these to get started:",
-    assistantLabel: "SRCW Assistant",
+    welcomeTitle: "Welcome, I'm SRCW Chatbot.",
+    welcomeSub: "Your official AI campus guide for Sri Ramakrishna College of Arts & Science for Women.",
+    tryThese: "Explore frequently asked questions or type your query below:",
+    assistantLabel: "SRCW Chatbot",
     toggleLang: "தமிழ்",
   },
   ta: {
@@ -69,11 +69,11 @@ const LABELS = {
     copied: "நகலெடுக்கப்பட்டது!",
     disclaimer:
       "இந்த பதில்கள் SRCW இன் வெளியிடப்பட்ட தகவல்களிலிருந்து உருவாக்கப்பட்டுள்ளன. முக்கியமான விவரங்களை கல்லூரி அலுவலகத்துடன் உறுதிப்படுத்திக் கொள்ளுங்கள்.",
-    welcomeTitle: "வணக்கம்! நான் SRCW உதவியாளர் 👋",
+    welcomeTitle: "வணக்கம், நான் SRCW Chatbot.",
     welcomeSub:
-      "ஸ்ரீ ராமகிருஷ்ணா கல்லூரி பற்றி எதையும் கேளுங்கள்.",
-    tryThese: "தொடங்க இதில் ஒன்றை தேர்ந்தெடுங்கள்:",
-    assistantLabel: "SRCW உதவியாளர்",
+      "ஸ்ரீ ராமகிருஷ்ணா மகளிர் கலை மற்றும் அறிவியல் கல்லூரியின் அதிகாரப்பூர்வ AI வழிகாட்டி.",
+    tryThese: "தொடங்க இதில் ஒன்றை தேர்ந்தெடுங்கள் அல்லது கீழே தட்டச்சு செய்யவும்:",
+    assistantLabel: "SRCW Chatbot",
     toggleLang: "English",
   },
 };
@@ -173,10 +173,18 @@ function SkeletonResponse({ label }) {
   return (
     <div className="space-y-1 animate-fade-in">
       <div className="flex items-center gap-2 mb-2">
-        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/15">
-          <Sparkles className="size-3.5 text-primary animate-pulse" />
+        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500/15 border border-emerald-500/30 p-1 shrink-0">
+          <img
+            src="/crest.svg"
+            alt="SRCW"
+            className="h-full w-full object-contain animate-pulse"
+            onError={(e) => {
+              e.target.style.display = "none";
+              e.target.parentElement.innerHTML = '<span class="text-xs">🏛️</span>';
+            }}
+          />
         </div>
-        <span className="text-xs font-medium text-muted-foreground">{label}</span>
+        <span className="text-xs font-semibold text-emerald-400">{label}</span>
       </div>
       <div className="pl-9 space-y-2">
         <div className="thinking-dots flex gap-1.5 py-1">
@@ -343,16 +351,21 @@ export default function Chat({ lang, onLangToggle }) {
   return (
     <div className="flex h-full flex-col">
       {/* ── Top bar (mobile / embedded header) ── */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-border/50 bg-card/40 backdrop-blur-sm md:hidden">
-        <div className="flex items-center gap-2">
-          <img src="/logo.svg" alt="SRCW" className="h-7 w-auto" onError={(e) => { e.target.style.display = "none"; }} />
-          <span className="font-semibold text-sm text-foreground">SRCW Assistant</span>
+      <div className="flex items-center justify-between px-4 py-2.5 border-b border-border/50 bg-card/60 backdrop-blur-md md:hidden">
+        <div className="flex items-center gap-2.5">
+          <div className="h-8 w-8 rounded-lg bg-emerald-950/60 border border-emerald-500/30 p-1 flex items-center justify-center shrink-0">
+            <img src="/crest.svg" alt="SRCW" className="h-full w-full object-contain" onError={(e) => { e.target.style.display = "none"; }} />
+          </div>
+          <div>
+            <span className="font-bold text-sm text-foreground block leading-tight">SRCW Chatbot</span>
+            <span className="text-[10px] text-emerald-400 font-medium block leading-tight">Educate to Empower</span>
+          </div>
         </div>
         <button
           onClick={onLangToggle}
-          className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+          className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-emerald-400 px-2 py-1 rounded-md border border-emerald-500/20 bg-emerald-950/30 transition-colors"
         >
-          <Globe className="size-3.5" /> {labels.toggleLang}
+          <Globe className="size-3.5 text-emerald-400" /> {labels.toggleLang}
         </button>
       </div>
 
@@ -361,36 +374,50 @@ export default function Chat({ lang, onLangToggle }) {
 
         {/* Welcome state */}
         {messages.length === 0 && !busy && (
-          <div className="flex flex-col items-center justify-center min-h-full gap-8 animate-fade-in pb-8">
+          <div className="flex flex-col items-center justify-center min-h-full gap-7 animate-fade-in pb-8 max-w-2xl mx-auto px-2">
             {/* Logo + greeting */}
-            <div className="text-center space-y-3">
+            <div className="text-center space-y-4">
               <div className="flex justify-center animate-float">
-                <div className="h-20 w-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-lg shadow-primary/10">
-                  <img
-                    src="/logo.svg"
-                    alt="SRCW"
-                    className="h-14 w-14 object-contain"
-                    onError={(e) => {
-                      e.target.style.display = "none";
-                      e.target.parentElement.innerHTML = '<span class="text-3xl">🏫</span>';
-                    }}
-                  />
+                <div className="relative group">
+                  <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-emerald-500/40 via-[#c8a634]/30 to-emerald-500/40 blur-md opacity-80 group-hover:opacity-100 transition duration-500" />
+                  <div className="relative h-24 w-24 rounded-2xl bg-gradient-to-b from-card to-emerald-950/90 border border-emerald-500/35 flex items-center justify-center shadow-xl shadow-emerald-950/70 p-3">
+                    <img
+                      src="/crest.svg"
+                      alt="SRCW Crest"
+                      className="h-full w-full object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                        e.target.parentElement.innerHTML = '<span class="text-4xl">🏛️</span>';
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
-              <div>
-                <h2 className="text-xl font-semibold text-foreground">{labels.welcomeTitle}</h2>
-                <p className="text-sm text-muted-foreground mt-1 max-w-xs mx-auto">{labels.welcomeSub}</p>
+
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 mb-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Sri Ramakrishna College of Arts & Science for Women</span>
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
+                  {labels.welcomeTitle}
+                </h1>
+                <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+                  {labels.welcomeSub}
+                </p>
               </div>
             </div>
 
             {/* Suggestion chips */}
-            <div className="w-full max-w-lg">
-              <p className="text-xs text-muted-foreground text-center mb-3">{labels.tryThese}</p>
+            <div className="w-full">
+              <p className="text-xs text-muted-foreground text-center mb-3 font-medium">
+                {labels.tryThese}
+              </p>
               <div className="flex flex-wrap gap-2 justify-center">
                 {chips.map((chip) => (
                   <button
                     key={chip}
-                    className="chip"
+                    className="chip text-xs md:text-sm"
                     onClick={() => send(chip)}
                     disabled={busy}
                   >
@@ -398,6 +425,19 @@ export default function Chat({ lang, onLangToggle }) {
                   </button>
                 ))}
               </div>
+            </div>
+
+            {/* Quick stats/features pill row */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-[11px] text-muted-foreground">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-950/40 border border-emerald-500/15">
+                <span className="text-[#e5be44]">★</span> NAAC Re-accredited with A+
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-950/40 border border-emerald-500/15">
+                <span>🎓</span> Bharathiar University Affiliated
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-950/40 border border-emerald-500/15">
+                <span>📍</span> Coimbatore, TN
+              </span>
             </div>
 
             {/* Disclaimer */}
@@ -429,10 +469,18 @@ export default function Chat({ lang, onLangToggle }) {
             >
               {/* Avatar row */}
               <div className="flex items-center gap-2 mb-1">
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/12 shrink-0">
-                  <Sparkles className="size-3.5 text-primary" />
+                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500/15 border border-emerald-500/30 p-1 shrink-0">
+                  <img
+                    src="/crest.svg"
+                    alt="SRCW"
+                    className="h-full w-full object-contain"
+                    onError={(e) => {
+                      e.target.style.display = "none";
+                      e.target.parentElement.innerHTML = '<span class="text-xs">🏛️</span>';
+                    }}
+                  />
                 </div>
-                <span className="text-xs font-medium text-muted-foreground">{labels.assistantLabel}</span>
+                <span className="text-xs font-semibold text-emerald-400">{labels.assistantLabel}</span>
               </div>
 
               {/* Answer */}

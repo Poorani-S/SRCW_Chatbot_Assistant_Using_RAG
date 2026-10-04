@@ -36,11 +36,11 @@ export default function App() {
 
         {/* Brand */}
         <div className="flex items-center gap-3 pt-1">
-          <div className="h-11 w-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 animate-glow-pulse">
+          <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-emerald-950/80 to-[#03523c]/40 border border-emerald-500/30 flex items-center justify-center shrink-0 shadow-md shadow-emerald-950/50 p-1.5 animate-glow-pulse">
             <img
-              src="/logo.svg"
-              alt="SRCW Logo"
-              className="h-8 w-8 object-contain"
+              src="/crest.svg"
+              alt="SRCW Crest Emblem"
+              className="h-full w-full object-contain filter drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
               onError={(e) => {
                 e.target.style.display = "none";
                 e.target.parentElement.innerHTML = '<span class="text-xl">🏛️</span>';
@@ -48,38 +48,44 @@ export default function App() {
             />
           </div>
           <div className="min-w-0">
-            <h1 className="text-sm font-bold leading-tight text-foreground tracking-tight">
-              SRCW Assistant
+            <h1 className="text-base font-bold leading-tight text-foreground tracking-tight">
+              SRCW Chatbot
             </h1>
-            <p className="text-[11px] text-muted-foreground mt-0.5 leading-tight">
+            <p className="text-[11px] text-emerald-400 font-medium mt-0.5 leading-tight">
               Educate to Empower
             </p>
           </div>
         </div>
 
         {/* College info card */}
-        <div className="rounded-xl bg-primary/6 border border-primary/15 p-4 space-y-2.5">
-          <div className="flex items-start gap-2">
-            <span className="text-base shrink-0 mt-0.5">🏫</span>
-            <div>
-              <p className="text-xs font-semibold text-foreground leading-tight">
+        <div className="rounded-xl bg-emerald-950/30 border border-emerald-500/20 p-4 space-y-3 shadow-sm">
+          <div className="flex items-start gap-2.5">
+            <div className="w-6 h-6 rounded-md bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center shrink-0 mt-0.5 text-xs">
+              🏛️
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-foreground leading-snug">
                 Sri Ramakrishna College of Arts & Science for Women
               </p>
-              <p className="text-[11px] text-muted-foreground mt-1">
-                Affiliated with Bharathiar University<br />
-                NAAC Reaccredited with <strong className="text-primary">A+ Grade</strong>
-              </p>
+              <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
+                <span className="text-[10px] px-1.5 py-0.5 rounded font-semibold bg-[#c8a634]/15 text-[#e5be44] border border-[#c8a634]/30">
+                  NAAC A+ Grade
+                </span>
+                <span className="text-[10px] text-muted-foreground">
+                  Bharathiar Univ.
+                </span>
+              </div>
             </div>
           </div>
-          <div className="space-y-1 text-[11px] text-muted-foreground">
-            <p>📍 New Siddhapudur, Coimbatore – 641044</p>
-            <p>📞 +91 7373144766</p>
-            <p>✉️ enquiry@srcw.ac.in</p>
+          <div className="space-y-1.5 text-[11px] text-muted-foreground pt-1 border-t border-emerald-500/10">
+            <p className="flex items-center gap-1.5"><span>📍</span> New Siddhapudur, Coimbatore – 641044</p>
+            <p className="flex items-center gap-1.5"><span>📞</span> +91 7373144766</p>
+            <p className="flex items-center gap-1.5"><span>✉️</span> enquiry@srcw.ac.in</p>
             <a
               href="https://srcw.ac.in"
               target="_blank"
               rel="noreferrer"
-              className="text-citation hover:text-citation-hover transition-colors block"
+              className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors inline-flex items-center gap-1 mt-1"
             >
               🌐 srcw.ac.in ↗
             </a>
@@ -93,13 +99,13 @@ export default function App() {
           </p>
           <div className="flex gap-2">
             <button
-              className={`chip flex-1 justify-center text-center ${lang === "en" ? "border-primary/60 bg-primary/20" : ""}`}
+              className={`chip flex-1 justify-center text-center transition-all ${lang === "en" ? "border-emerald-500/60 bg-emerald-500/20 text-white font-semibold shadow-sm shadow-emerald-900/40" : "opacity-80 hover:opacity-100"}`}
               onClick={() => setLang("en")}
             >
               🇬🇧 English
             </button>
             <button
-              className={`chip flex-1 justify-center text-center ${lang === "ta" ? "border-primary/60 bg-primary/20" : ""}`}
+              className={`chip flex-1 justify-center text-center transition-all ${lang === "ta" ? "border-emerald-500/60 bg-emerald-500/20 text-white font-semibold shadow-sm shadow-emerald-900/40" : "opacity-80 hover:opacity-100"}`}
               onClick={() => setLang("ta")}
             >
               🇮🇳 தமிழ்
