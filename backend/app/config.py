@@ -45,8 +45,8 @@ CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", 120))
 TOP_K = int(os.getenv("TOP_K", 4))
 SCORE_THRESHOLD = float(os.getenv("SCORE_THRESHOLD", 0.42))
 
-# Multilingual embedding model
-EMBED_MODEL = os.getenv("EMBED_MODEL", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+# Lightweight embedding model (runs under 100MB RAM, ideal for Render free tier)
+EMBED_MODEL = os.getenv("EMBED_MODEL", "BAAI/bge-small-en-v1.5")
 
 # Data & Knowledge directories
 DATA_DIR = BACKEND_DIR / "data"
