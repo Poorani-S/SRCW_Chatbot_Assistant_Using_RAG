@@ -99,6 +99,9 @@ def load_index() -> None:
     tokenized = [c["text"].lower().split() for c in _chunks]
     _bm25 = BM25Okapi(tokenized)
 
+    # Pre-warm embedder during startup so first user request doesn't lag/timeout
+    _get_embedder()
+
     print(f"[SRCW] Loaded index: {_index.ntotal} vectors, {len(_chunks)} chunks")
 
 
