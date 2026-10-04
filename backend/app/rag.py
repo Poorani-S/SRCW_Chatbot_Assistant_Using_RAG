@@ -59,10 +59,11 @@ _bm25: BM25Okapi | None = None
 
 
 def _get_embedder() -> TextEmbedding:
-    """Lazily load the multilingual embedding model."""
+    """Lazily load the embedding model."""
     global _embedder
     if _embedder is None:
-        _embedder = TextEmbedding(EMBED_MODEL)
+        model_name = (EMBED_MODEL or "BAAI/bge-small-en-v1.5").strip()
+        _embedder = TextEmbedding(model_name)
     return _embedder
 
 

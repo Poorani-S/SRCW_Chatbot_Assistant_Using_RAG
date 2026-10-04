@@ -16,23 +16,23 @@ ROOT_DIR = BACKEND_DIR.parent
 load_dotenv(BACKEND_DIR / ".env")
 
 # LLM Provider configuration
-PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
+PROVIDER = os.getenv("LLM_PROVIDER", "gemini").strip().lower()
 
 PROVIDERS = {
     "ollama": {
-        "base_url": os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1"),
+        "base_url": os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1").strip(),
         "api_key": "ollama",
-        "model": os.getenv("OLLAMA_MODEL", "llama3.2"),
+        "model": os.getenv("OLLAMA_MODEL", "llama3.2").strip(),
     },
     "gemini": {
         "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
-        "api_key": os.getenv("GEMINI_API_KEY", ""),
-        "model": os.getenv("GEMINI_MODEL", "gemini-3.8-flash"),
+        "api_key": os.getenv("GEMINI_API_KEY", "").strip(),
+        "model": os.getenv("GEMINI_MODEL", "gemini-3.8-flash").strip(),
     },
     "openrouter": {
         "base_url": "https://openrouter.ai/api/v1",
-        "api_key": os.getenv("OPENROUTER_API_KEY", ""),
-        "model": os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.3-70b-instruct:free"),
+        "api_key": os.getenv("OPENROUTER_API_KEY", "").strip(),
+        "model": os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.3-70b-instruct:free").strip(),
     },
 }
 
@@ -40,13 +40,13 @@ if PROVIDER not in PROVIDERS:
     raise ValueError(f"LLM_PROVIDER must be one of {list(PROVIDERS.keys())}, got '{PROVIDER}'")
 
 # RAG knobs
-CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", 700))
-CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", 120))
-TOP_K = int(os.getenv("TOP_K", 4))
-SCORE_THRESHOLD = float(os.getenv("SCORE_THRESHOLD", 0.42))
+CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "700").strip())
+CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "120").strip())
+TOP_K = int(os.getenv("TOP_K", "4").strip())
+SCORE_THRESHOLD = float(os.getenv("SCORE_THRESHOLD", "0.42").strip())
 
 # Lightweight embedding model (runs under 100MB RAM, ideal for Render free tier)
-EMBED_MODEL = os.getenv("EMBED_MODEL", "BAAI/bge-small-en-v1.5")
+EMBED_MODEL = os.getenv("EMBED_MODEL", "BAAI/bge-small-en-v1.5").strip()
 
 # Data & Knowledge directories
 DATA_DIR = BACKEND_DIR / "data"
